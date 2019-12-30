@@ -1,6 +1,6 @@
 {
   "name": "taro-tailwind",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A tailwind build which works in Taro",
   "main": "removeUnsupported.js",
   "bin": {
@@ -10,7 +10,8 @@
     "build": "node build.js"
   },
   "files": [
-    "dist"
+    "dist",
+    "build.js"
   ],
   "repository": "https://github.com/windedge/taro-tailwind",
   "keywords": [
@@ -20,7 +21,10 @@
     "styling",
     "css"
   ],
-  "author": "Igor Randjelovic, xujl",
+  "author": "Igor Randjelovic",
+  "contributors": [
+    "xujl"
+  ],
   "license": "MIT",
   "devDependencies": {
     "postcss": "^7.0.17",
