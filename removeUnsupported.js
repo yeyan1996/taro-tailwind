@@ -5,9 +5,9 @@ function isSupportedProperty(prop, val = null) {
   if (!rules) return false
 
   if (val) {
-    if (val.endsWith('vh') || val.endsWith('vw') || val.endsWith('em')) {
-      return false
-    }
+    // if (val.endsWith('vh') || val.endsWith('vw') || val.endsWith('em')) {
+    //   return false
+    // }
 
     if (Array.isArray(rules)) {
       return rules.includes(val)
@@ -25,7 +25,7 @@ function isSupportedRule(selector) {
   return true
 }
 
-module.exports = postcss.plugin('postcss-nativescript', (options = {}) => {
+module.exports = postcss.plugin('postcss-taro-tailwind', (options = {}) => {
   return root => {
     root.walkRules(rule => {
       if (rule.parent.name === 'media') {
@@ -56,7 +56,7 @@ module.exports = postcss.plugin('postcss-nativescript', (options = {}) => {
         // allow using rem values (default unit in tailwind)
         if (decl.value.includes('rem')) {
           options.debug && console.log('replacing rem value', decl.prop, decl.value, '=>', '' + (parseFloat(decl.value) * 16))
-          decl.value = '' + (parseFloat(decl.value) * 16)
+          decl.value = '' + (parseFloat(decl.value) * 16) + 'px'
         }
 
         if (!isSupportedProperty(decl.prop, decl.value)) {
@@ -96,6 +96,18 @@ const supportedProperties = {
   'border-top-right-radius': true,
   'border-bottom-right-radius': true,
   'border-bottom-left-radius': true,
+  'border-style': true,
+  'box-shadow': true,
+  'display':true,
+  'flex': true,
+  'flex-direction': true,
+  'flex-wrap':true,
+  'align-items':true,
+  'align-self': true,
+  'justify-content':true,
+  'align-content':true,
+  'flex-grow': true,
+  'flex-shrink': true,
   'font': true,
   'font-family': true,
   'font-size': true,
@@ -117,13 +129,22 @@ const supportedProperties = {
   'margin-left': true,
   'width': true,
   'height': true,
+  'max-width': true,
+  'max-height': true,
   'min-width': true,
   'min-height': true,
+  'object-fit': true,
+  'object-position': true,
+  'overflow': true,
+  'overflow-wrap': true,
   'padding': true,
   'padding-top': true,
   'padding-right': true,
   'padding-bottom': true,
   'padding-left': true,
+  'position':true,
   'visibility': ['visible', 'collapse'],
   'opacity': true,
+  'white-space': true,
+  'word-break': true
 }
