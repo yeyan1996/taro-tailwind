@@ -27,7 +27,6 @@ import 'taro-tailwind/dist/tailwind.css'
 ### 2. 使用PostCSS生成
 添加talwindcss依赖:
 ```shell
-
 # 使用npm
 npm install --save-dev tailwindcss
 
@@ -43,7 +42,6 @@ cp ./node_modules/taro-tailwind/tailwind.src.css ./src/tailwind.src.css
 
 在postcss.config.js中添加:
 ```js
-
 module.exports = {
   plugins: [
     // ...
@@ -74,7 +72,6 @@ export default class CustomComponent extends Component {
     ...
   }
 }
-
 ```
 
 ### 反斜杠和冒号的使用
