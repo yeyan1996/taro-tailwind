@@ -55,6 +55,10 @@ module.exports = {
 ```shell
 postcss ./src/tailwind.src.css -o ./src/tailwind.css
 ```
+ 在app.jsx中引入样式文件
+```js
+import './tailwind.css'
+```
 
 
 ## 注意事项
@@ -87,4 +91,38 @@ export default class CustomComponent extends Component {
 
 ## FAQ
 ### 使用PurgeCSS简化生成的tailwind.css
-...
+修改postcss.config.js文件，使用下面的示例配置：
+```js
+const purgecss = require('@fullhuman/postcss-purgecss')
+
+const production = process.env.NODE_ENV === 'production'
+
+module.exports = {
+  plugins: [
+    require('tailwindcss'),
+    // require('taro-tailwind')({debug: true}),
+    require('taro-tailwind'),
+    require('autoprefixer'),
+    production && require('cssnano')({ preset: 'default' }),
+    production &&
+      purgecss({
+        content: ['**/*.html', './src/**/*.js', './src/**/*.jsx'],
+        css: ['./src/**/*.css'],
+        extractors: [],
+      }),
+  ],
+}
+
+```
+运行命令生成简化后的css：
+```shell
+NODE_ENV=production postcss ./src/tailwind.src.css -o ./src/tailwind.css
+```
+或加到打包脚本(package.json)里：
+```json
+{
+  "scripts": {
+    "build:weapp": "cross-env NODE_ENV=production postcss ./src/tailwind.src.css -o ./src/tailwind.css && taro build --type weapp",
+  }
+}
+```
