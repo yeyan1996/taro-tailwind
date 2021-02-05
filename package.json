@@ -1,11 +1,8 @@
 {
-  "name": "taro-tailwind",
-  "version": "0.3.1",
-  "description": "A tailwind build which works in Taro",
+  "name": "tailwind-mini",
+  "version": "0.0.3",
+  "description": "A tailwind build which works in mini",
   "main": "removeUnsupported.js",
-  "bin": {
-    "taro-tailwind": "./build.js"
-  },
   "scripts": {
     "build": "node build.js"
   },
@@ -15,7 +12,6 @@
     "tailwind.config.js",
     "tailwind.src.css"
   ],
-  "repository": "https://github.com/windedge/taro-tailwind",
   "keywords": [
     "taro",
     "tailwind",
@@ -23,13 +19,10 @@
     "styling",
     "css"
   ],
-  "author": "Igor Randjelovic",
-  "contributors": [
-    "xujl"
-  ],
+  "author": "yeyan1996",
   "license": "MIT",
   "devDependencies": {
-    "postcss": "^7.0.17",
+    "postcss": "^8.2.1",
     "tailwindcss": "^1.2.0"
   }
 }
