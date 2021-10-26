@@ -27,7 +27,7 @@ module.exports = postcss.plugin('tailwind-mini', (options = { platform: 'weapp'}
           }
         }
 
-        if (decl.prop === 'vertical-align') {
+        if (options.platform === 'weapp' && decl.prop === 'vertical-align') {
           switch (decl.value) {
             case 'middle':
               decl.replaceWith(decl.clone({ value: 'center'}))
