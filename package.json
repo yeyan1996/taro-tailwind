@@ -1,6 +1,6 @@
 {
   "name": "tailwind-mini",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A tailwind build which works in mini",
   "main": "removeUnsupported.js",
   "scripts": {
